@@ -41,7 +41,7 @@ For more details, see the Keycloak documentation about how to https://www.keyclo
 
 ### Initialized Tenant
 
-######keycloak realms:
+###### keycloak realms:
   - default:
     - Clients : 
       - front
@@ -64,7 +64,7 @@ For more details, see the Keycloak documentation about how to https://www.keyclo
       - admin | admin
       - user | user  
 
-######Databases:
+###### Databases:
   - default:
     - maxilog-default: 
       - maxilog-default-user | maxilog-default-password
@@ -75,7 +75,7 @@ For more details, see the Keycloak documentation about how to https://www.keyclo
     - maxilog-tenant2: 
       - maxilog-tenant2-user | maxilog-tenant2-password
 
-###Get an access token
+### Get an access token
 Change `REALM`, `USERNAME` and `PASSWORD` by the information of the realm you want to connect :
 ```bash
 export access_token=$(\
@@ -110,7 +110,7 @@ curl -X GET -v http://localhost:8080/api/tasks/me \
 --header  "Authorization: Bearer $access_token"
 ```
 
-###Create new Tenant
+### Create new Tenant
 To create new tenant you have to use `default` tenant.
 
 Let's create tenant named `tenant3`
@@ -136,12 +136,12 @@ PS: In this case, you have to add hostname to `/etc/hosts` :
 `127.0.0.1       tenant3.maxilog.io`
 
 
-####Backend(spring)
+#### Backend(spring)
 > ./mvnw spring-boot:run
 
 This command will leave Spring running in the foreground listening on port 8080.
 
-####Frontend(angular)
+#### Frontend(angular)
 ```bash
 cd src/main/webapp/
 npm install
