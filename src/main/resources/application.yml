@@ -1,0 +1,48 @@
+maxilog:
+  datasource:
+    host: jdbc:postgresql://localhost:5432/
+    db: maxilog-default
+  keycloak:
+    url: http://localhost:8180
+    realm: default
+server:
+  port: 8080
+spring:
+  application:
+    name: multi-tenant
+  security:
+    oauth2:
+      client:
+        provider:
+          default:
+            issuer-uri: ${maxilog.keycloak.url}/auth/realms/${maxilog.keycloak.realm}
+        registration:
+          default:
+            authorization-grant-type: client_credentials
+            client-id: back
+            client-secret: back
+  datasource:
+    url: jdbc:postgresql://localhost:5432/maxilog-default
+    username: 'maxilog-default-user'
+    password: 'maxilog-default-password'
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        #dialect: org.hibernate.dialect.PostgreSQLDialect
+        #multiTenancy: DATABASE
+        #tenant_identifier_resolver: io.maxilog.config.tenant.TenantDatasourceResolver
+        #multi_tenant_connection_provider: io.maxilog.config.DataSourceBasedMultiTenantConnectionProviderImpl
+        hbm2ddl:
+          auto: none
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    schemas: public
+    #locations: db/migration
+    validate-on-migrate: true
+    baseline-on-migrate: true
+    baseline-version: 1.0.0
+    sql-migration-prefix: DV
+    enabled: true
