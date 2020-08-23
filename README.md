@@ -1,13 +1,12 @@
-# Quarkus multi tenant
+# Spring multi tenant
 
-In this example, we build a very simple quarkus application:
+In this example, we build a very simple Spring application:
 
 
 ## Requirements
 
 To compile and run this demo you will need:
 - JDK 1.8+
-- GraalVM
 - NodeJS
 
 Make sure you have this ports available
@@ -137,10 +136,10 @@ PS: In this case, you have to add hostname to `/etc/hosts` :
 `127.0.0.1       tenant3.maxilog.io`
 
 
-####Backend(quarkus)
-> ./mvnw compile quarkus:dev
+####Backend(spring)
+> ./mvnw spring-boot:run
 
-This command will leave Quarkus running in the foreground listening on port 8080.
+This command will leave Spring running in the foreground listening on port 8080.
 
 ####Frontend(angular)
 ```bash
